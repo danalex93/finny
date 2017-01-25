@@ -6,6 +6,7 @@ import { HomePage } from '../app/home/home';
 import { IncomesPage } from '../app/incomes/incomes';
 import { ExpensesPage } from '../app/expenses/expenses';
 import { AddExpenseModal } from '../app/expenses/add-expense-modal';
+import { SettingsPage } from '../app/settings/settings';
 import { TabsPage } from '../app/tabs/tabs'
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TabsPage } from '../app/tabs/tabs'
     IncomesPage,
     ExpensesPage,
     AddExpenseModal,
+    SettingsPage,
     TabsPage
   ],
   imports: [
@@ -27,6 +29,7 @@ import { TabsPage } from '../app/tabs/tabs'
     IncomesPage,
     ExpensesPage,
     AddExpenseModal,
+    SettingsPage,
     TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]

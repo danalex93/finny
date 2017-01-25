@@ -4,18 +4,29 @@
       Gastos
     </ion-title>
     <ion-buttons start>
-      <button (click)="addExpense()"><ion-icon name="add"></ion-icon>  </button>
+      <button ion-button icon-only (click)="addExpense()"><ion-icon name="add"></ion-icon>  </button>
     </ion-buttons>
     <ion-buttons end>
-      <button (click)="refresh()"><ion-icon name="refresh"></ion-icon>  </button>
+      <button ion-button icon-only (click)="refresh()"><ion-icon name="refresh"></ion-icon>  </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-     <ion-item *ngFor="let expense of expenses">
-       {{expense.name}} - ${{expense.amount}} <button (click)="delete(expense.id)">Borrar</button>
-   </ion-item>
-   </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-30><strong>Fecha</strong></ion-col>
+      <ion-col width-30><strong>Nombre</strong></ion-col>
+      <ion-col width-30><strong>Cantidad</strong></ion-col>
+      <ion-col width-10></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let expense of expenses ">
+      <ion-col width-30>{{ expense.date }}</ion-col>
+      <ion-col width-30>{{ expense.name }}</ion-col>
+      <ion-col width-30>${{ expense.amount | number }}</ion-col>
+      <ion-col width-10>
+        <button ion-button icon-only (click)="deleteExpense(expense.id)"><ion-icon name="trash"></ion-icon></button>
+      </ion-col>
+   </ion-row>
+  </ion-grid>
 </ion-content>
