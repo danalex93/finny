@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Agregar Gasto
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="expense" (ngSubmit)="add()">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Monto</ion-label>
+      <ion-textarea formControlName="amount"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit">Agregar</button>
+  </form>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gastos
+    </ion-title>
+    <ion-buttons start>
+      <button (click)="addExpense()"><ion-icon name="add"></ion-icon>  </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button (click)="refresh()"><ion-icon name="refresh"></ion-icon>  </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+     <ion-item *ngFor="let expense of expenses">
+       {{expense.name}} - ${{expense.amount}} <button (click)="delete(expense.id)">Borrar</button>
+   </ion-item>
+   </ion-list>
+</ion-content>
