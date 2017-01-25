@@ -1,11 +1,45 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ingresos
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>Ingresos</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="addIncome()"><ion-icon name="add"></ion-icon> </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <ion-card>
+    <ion-card-header>
+      Total de Ingresos:
+    </ion-card-header>
+
+    <ion-card-content>
+      ${{ getTotal() | number }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-30><strong>Fecha</strong></ion-col>
+          <ion-col width-30><strong>Nombre</strong></ion-col>
+          <ion-col width-30><strong>Cantidad</strong></ion-col>
+          <ion-col width-10></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let income of incomes ">
+          <ion-col width-30>{{ income.date }}</ion-col>
+          <ion-col width-30>{{ income.name }}</ion-col>
+          <ion-col width-30>${{ income.amount | number }}</ion-col>
+          <ion-col width-10>
+            <button ion-button icon-only (click)="deleteIncome(income.id)"><ion-icon name="trash"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

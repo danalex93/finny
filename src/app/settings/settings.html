@@ -1,11 +1,15 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>Ajustes</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <button (click)="clearDatabase()">Limpiar Datos</button>
-  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <button ion-item (click)="clearDatabase()">Limpiar Datos</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

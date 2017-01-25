@@ -24,11 +24,8 @@ export class FinnyApp {
           name: "data.db",
           location: "default"
       }).then(() => {
-          db.executeSql("CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE); CREATE TABLE IF NOT EXISTS incomes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {}).then((data) => {
-              console.log("TABLE CREATED: ", data);
-          }, (error) => {
-              console.error("Unable to execute sql", error);
-          })
+          db.executeSql("CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {});
+          db.executeSql("CREATE TABLE IF NOT EXISTS incomes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {});
       }, (error) => {
           console.error("Unable to open database", error);
       });

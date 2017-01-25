@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular'
 import { FinnyApp } from './app.component';
 import { HomePage } from '../app/home/home';
 import { IncomesPage } from '../app/incomes/incomes';
+import { AddIncomeModal } from '../app/incomes/add-income-modal';
 import { ExpensesPage } from '../app/expenses/expenses';
 import { AddExpenseModal } from '../app/expenses/add-expense-modal';
 import { SettingsPage } from '../app/settings/settings';
@@ -14,6 +15,7 @@ import { TabsPage } from '../app/tabs/tabs'
     FinnyApp,
     HomePage,
     IncomesPage,
+    AddIncomeModal,
     ExpensesPage,
     AddExpenseModal,
     SettingsPage,
@@ -27,6 +29,7 @@ import { TabsPage } from '../app/tabs/tabs'
     FinnyApp,
     HomePage,
     IncomesPage,
+    AddIncomeModal,
     ExpensesPage,
     AddExpenseModal,
     SettingsPage,

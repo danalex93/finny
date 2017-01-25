@@ -1,2 +1,4 @@
-# finny
-Simple Financial Control App
+# Finny
+Your Simple Financial Assistant
+
+

@@ -1,32 +1,45 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Gastos
-    </ion-title>
+  <ion-toolbar>
+    <ion-title>Gastos</ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="addExpense()"><ion-icon name="add"></ion-icon>  </button>
     </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="refresh()"><ion-icon name="refresh"></ion-icon>  </button>
-    </ion-buttons>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col width-30><strong>Fecha</strong></ion-col>
-      <ion-col width-30><strong>Nombre</strong></ion-col>
-      <ion-col width-30><strong>Cantidad</strong></ion-col>
-      <ion-col width-10></ion-col>
-    </ion-row>
-    <ion-row *ngFor="let expense of expenses ">
-      <ion-col width-30>{{ expense.date }}</ion-col>
-      <ion-col width-30>{{ expense.name }}</ion-col>
-      <ion-col width-30>${{ expense.amount | number }}</ion-col>
-      <ion-col width-10>
-        <button ion-button icon-only (click)="deleteExpense(expense.id)"><ion-icon name="trash"></ion-icon></button>
-      </ion-col>
-   </ion-row>
-  </ion-grid>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-card-header>
+      Total de Gastos:
+    </ion-card-header>
+
+    <ion-card-content>
+      ${{ getTotal() | number }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-30><strong>Fecha</strong></ion-col>
+          <ion-col width-30><strong>Nombre</strong></ion-col>
+          <ion-col width-30><strong>Cantidad</strong></ion-col>
+          <ion-col width-10></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let expense of expenses ">
+          <ion-col width-30>{{ expense.date }}</ion-col>
+          <ion-col width-30>{{ expense.name }}</ion-col>
+          <ion-col width-30>${{ expense.amount | number }}</ion-col>
+          <ion-col width-10>
+            <button ion-button icon-only (click)="deleteExpense(expense.id)"><ion-icon name="trash"></ion-icon></button>
+          </ion-col>
+       </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "Finny",
+  "author": "Daniel Morales Miguel",
+  "homepage": "http://danielmorales.cl/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -47,5 +47,5 @@
       "locator": "ios"
     }
   ],
-  "description": "finny: An Ionic project"
+  "description": "Finny: Your Simple Financial Assistant"
 }

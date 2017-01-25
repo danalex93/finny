@@ -28,9 +28,10 @@ export class SettingsPage{
           handler: () => {
             this.database = new SQLite();
             this.database.openDatabase({name: "data.db", location: "default"}).then(() => {
-              this.database.executeSql('DROP TABLE IF EXISTS expenses; DROP TABLE IF EXISTS incomes;', []).then(() => {
-                this.database.executeSql("CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE); CREATE TABLE IF NOT EXISTS incomes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {})
-              });
+              this.database.executeSql('DROP TABLE IF EXISTS expenses;', []);
+              this.database.executeSql(' DROP TABLE IF EXISTS incomes;', []);
+              this.database.executeSql("CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {})
+              this.database.executeSql("CREATE TABLE IF NOT EXISTS incomes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, date TEXT DEFAULT CURRENT_DATE);", {});
             }, (error) => {
               console.log("ERROR: ", error);
             });

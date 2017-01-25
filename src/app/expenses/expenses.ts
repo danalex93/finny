@@ -3,6 +3,15 @@ import { SQLite } from 'ionic-native';
 import { ModalController, NavController, Platform, ViewController, AlertController } from 'ionic-angular';
 import { AddExpenseModal } from './add-expense-modal';
 
+export class Expense {
+  constructor(
+    public id: number,
+    public name: string,
+    public amount: number,
+    public date: string
+  ) {  }
+}
+
 @Component({
   selector: 'expenses-page',
   templateUrl: 'expenses.html'
@@ -10,7 +19,7 @@ import { AddExpenseModal } from './add-expense-modal';
 export class ExpensesPage {
 
   public database: SQLite;
-  public expenses: Array<Object>;
+  public expenses: Array<Expense>;
 
   constructor(public navCtrl: NavController, private platform: Platform, private modalCtrl: ModalController, public alertCtrl: AlertController) {
     this.platform.ready().then(() => {
@@ -54,16 +63,30 @@ export class ExpensesPage {
     confirm.present();
   };
 
-  public refresh() {
+  public getTotal(){
+    var total = 0;
+    if (this.expenses){
+      for (var i = 0; i < this.expenses.length; i++){
+        total += this.expenses[i].amount;
+      }
+    }
+    return total;
+  }
+
+  public refresh(refresher = null) {
     this.database.executeSql("SELECT * FROM expenses", []).then((data) => {
       this.expenses = [];
       if(data.rows.length > 0) {
           for(var i = 0; i < data.rows.length; i++) {
-              this.expenses.push({id: data.rows.item(i).id, date: new Date(data.rows.item(i).date), name: data.rows.item(i).name, amount: data.rows.item(i).amount});
+            this.expenses.push(
+              new Expense(data.rows.item(i).id, data.rows.item(i).name, data.rows.item(i).amount, data.rows.item(i).date)
+            );
           }
       }
+      if (refresher != null) refresher.complete();
     }, (error) => {
       console.log("ERROR: " + JSON.stringify(error));
+      if (refresher != null) refresher.complete();
     });
   }
 };
